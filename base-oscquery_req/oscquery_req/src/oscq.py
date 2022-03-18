@@ -202,15 +202,15 @@ class oscQuery:
                 headers=headers, params=qstring, timeout=120)
         except Exception as e:
             jsonResp = dict()
-            jsonResp['error'] = e
-            return json.loads(jsonResp)
+            jsonResp['error'] = str(e)
+            return jsonResp
         try:
             jsonResp = resp.json()
         except Exception as e:
             jsonResp = dict()
-            jsonResp['json_err'] = e
-            jsonResp['ret_data'] = b
-            return json.loads(jsonResp)
+            jsonResp['json_err'] = str(e)
+            jsonResp['ret_data'] = str(b)
+            return jsonResp
 
         return jsonResp
 
@@ -313,15 +313,15 @@ class oscQuery:
                 headers=headers, params=qstring, timeout=120)
         except Exception as e:
             jsonResp = dict()
-            jsonResp['error'] = e
-            return json.loads(jsonResp)
+            jsonResp['error'] = str(e)
+            return jsonResp
         try:
             jsonResp = resp.json()
         except Exception as e:
             jsonResp = dict()
-            jsonResp['json_err'] = e
-            jsonResp['ret_data'] = b
-            return json.loads(jsonResp)
+            jsonResp['json_err'] = str(e)
+            jsonResp['ret_data'] = str(b)
+            return jsonResp
 
         return jsonResp
 
