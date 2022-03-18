@@ -197,13 +197,20 @@ class oscQuery:
             'referer': 'osc_integration_libs',\
             'Accept-Encoding': 'br, gzip, compress'\
         }
-        resp = requests.get(my_obj.url, data=payload,\
-            headers=headers, params=qstring, timeout=120)
+        try:
+            resp = requests.get(my_obj.url, data=payload,\
+                headers=headers, params=qstring, timeout=120)
+        except Exception as e:
+            jsonResp = dict()
+            jsonResp['error'] = e
+            return json.loads(jsonResp)
         try:
             jsonResp = resp.json()
         except Exception as e:
-            print(e)
-            sys.exit(1)
+            jsonResp = dict()
+            jsonResp['json_err'] = e
+            jsonResp['ret_data'] = b
+            return json.loads(jsonResp)
 
         return jsonResp
 
@@ -301,13 +308,20 @@ class oscQuery:
             'referer': 'osc_integration_libs',\
             'Accept-Encoding': 'br, gzip, compress'\
         }
-        resp = requests.get(my_obj.url, data=payload,\
-            headers=headers, params=qstring, timeout=120)
+        try:
+            resp = requests.get(my_obj.url, data=payload,\
+                headers=headers, params=qstring, timeout=120)
+        except Exception as e:
+            jsonResp = dict()
+            jsonResp['error'] = e
+            return json.loads(jsonResp)
         try:
             jsonResp = resp.json()
         except Exception as e:
-            print(e)
-            sys.exit(1)
+            jsonResp = dict()
+            jsonResp['json_err'] = e
+            jsonResp['ret_data'] = b
+            return json.loads(jsonResp)
 
         return jsonResp
 
